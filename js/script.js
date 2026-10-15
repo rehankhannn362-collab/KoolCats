@@ -1,4 +1,25 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // Keep the page fully visible if motion is unavailable or reduced by the visitor. 
+  const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!reduceMotion && "IntersectionObserver" in window) {
+    const revealTargets = document.querySelectorAll(".section-heading, .feature-card, .how-art, .steps-list .step-item, .quote-card, .plan-card, .faq-accordion, .signup-card");
+    document.body.classList.add("js-motion");
+    revealTargets.forEach(function (element, index) {
+      element.classList.add("reveal-on-scroll");
+      if (element.classList.contains("feature-card") || element.classList.contains("plan-card")) {
+        element.dataset.revealDelay = String((index % 3) + 1);
+      }
+    });
+    const revealObserver = new IntersectionObserver(function (entries, observer) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -35px 0px" });
+    revealTargets.forEach(function (element) { revealObserver.observe(element); });
+  }
   const year = document.getElementById("currentYear");
   if (year) year.textContent = new Date().getFullYear();
 
