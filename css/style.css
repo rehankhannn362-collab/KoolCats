@@ -125,7 +125,8 @@ a { text-decoration: none; }
 .feature-card, .plan-card, .quote-card, .signup-card, .step-item {
   transition: transform var(--motion-smooth) var(--ease-playful), box-shadow var(--motion-smooth) ease, border-color var(--motion-smooth) ease;
 }
-.feature-card:hover, .plan-card:hover { transform: translateY(-7px); box-shadow: 0 24px 50px rgba(76,40,95,.13); }
+.feature-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(76,40,95,.09); }
+.plan-card:hover { transform: translateY(-7px); box-shadow: 0 24px 50px rgba(76,40,95,.13); }
 .feature-icon, .plan-icon { transition: transform var(--motion-smooth) var(--ease-playful); }
 .feature-card:hover .feature-icon, .plan-card:hover .plan-icon { transform: rotate(-7deg) scale(1.08); }
 .text-link { display: inline-flex; align-items: center; gap: 3px; transition: gap var(--motion-fast) ease, color var(--motion-fast) ease; }
